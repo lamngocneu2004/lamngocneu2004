@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Seek</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffd8d4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+            background-color: #fffafa;
+            color: #070606;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        header p {
+            margin: 5px 0 20px 0;
+            font-size: 1.2em;
+            color: #9b9595;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: #171515;
+            text-decoration: none;
+        }
+        .promo {
+            width: 80%;
+            height: 200px;
+            background-color: #ff9b8c;
+            border: 1px solid rgb(245, 248, 245);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            color: #333;
+            margin: 20px 0;
+            box-sizing: border-box;
+            border-radius: 5px;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+        }
+        .promo:hover {
+            background-color: #767474;
+            border-color: rgb(246, 244, 244);
+            color: red;
+        }
+        .jobs {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+            gap: 20px;
+        }
+        .item {
+            width: 100%;
+            padding: 20px;
+            background-color: lightblue;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .item h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        .item p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .container {
+            width: 80%;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"], input[type="email"], input[type="tel"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #0f0e0e;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+        footer {
+            width: 100%;
+            background-color: #fffafa;
+            color: #0e0e0e;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        @media (max-width: 414px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+            .promo, .jobs, .item {
+                width: 90%;
+            }
+        }
+        @media (min-width: 415px) and (max-width: 1024px) {
+            .container, .promo, .jobs, .item {
+                width: 70%;
+                padding: 20px;
+            }
+        }
+        @media (min-width: 1025px) {
+            .container, .promo, .jobs, .item {
+                width: 50%;
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <h1>Job Seek</h1>
+        <p>Your career journey starts here.   </p>
+    </header>
+
+    <div class="promo">Click here to get a job!</div>
+
+    <div class="jobs" id="jobs"></div>
+
+    <div class="container">
+        <h1>Job Application Form</h1>
+        <form id="jobForm">
+            <label for="fullname">Họ và tên:</label>
+            <input type="text" id="fullname" name="fullname" required>
+
+            <label for="email">Địa chỉ email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Số điện thoại:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="position">Công việc muốn làm:</label>
+            <input type="text" id="position" name="position" required>
+
+            <label for="salary">Mức lương mong muốn:</label>
+            <input type="text" id="salary" name="salary" required>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <footer>
+        <p>Họ tên: Lê Thị Ngọc Anh | Mã SV: 11217609 | Lớp: Thiết kế web</p>
+    </footer>
+
+    <script>
+        const jobListings = [
+        {
+                "position": "Sale",
+                "company": "MetaEcom",
+                "salary": "10.000.000 VND",
+                "requirements": "Đã có kinh nghiệm trong nghề ít nhất 1 năm"
+            },
+            {
+                "position": "Data Analysist",
+                "company": "Luna",
+                "salary": "1000 USD",
+                "requirements": "Can use Power BI and Larksuite."
+            },
+            {
+                "position": "Human Resource",
+                "company": "Microsoft",
+                "salary": "1500 USD",
+                "requirements": "Experience in human resource management."
+            },
+            {
+                "position": "Designer",
+                "company": "Babymonster",
+                "salary": "800 USD",
+                "requirements": "Have experience in this field less 2 years"
+            },
+            {
+                "position": "Trưởng phòng truyền thông",
+                "company": "Boo",
+                "salary": "20.000.000 VND",
+                "requirements": "Có kinh nghiệm trong việc xử lý khủng hoảng truyền thông và các kinh nghiệm liên quan."
+            },
+            {
+                "position": "Kế toán",
+                "company": "YBOX",
+                "salary": "18.000.000 VND",
+                "requirements": "Tốt nghiệp các trường kinh tế hàng đầu"
+            }
+        ];
+
+        const jobsContainer = document.getElementById('jobs');
+
+        jobListings.forEach(job => {
+            const jobDiv = document.createElement('div');
+            jobDiv.classList.add('item');
+            jobDiv.innerHTML = `
+                <h3>${job.position}</h3>
+                <p><strong>Company:</strong> ${job.company}</p>
+                <p><strong>Salary:</strong> ${job.salary}</p>
+                <p><strong>Requirements:</strong> ${job.requirements}</p>
+            `;
+            jobsContainer.appendChild(jobDiv);
+        });
+
+        document.getElementById('jobForm').addEventListener('submit', function(event) {
+            // Ngăn form submit mặc định
+            event.preventDefault();
+
+            // Lấy các giá trị của form
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const position = document.getElementById('position').value.trim();
+            const salary = document.getElementById('salary').value.trim();
+
+            // Biến kiểm tra hợp lệ
+            let valid = true;
+
+            // Kiểm tra Họ và tên
+            if (fullname === "") {
+                alert("Họ và tên không được để trống");
+                valid = false;
+            }
+
+            // Kiểm tra Email
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                alert("Email không hợp lệ
